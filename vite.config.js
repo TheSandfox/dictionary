@@ -7,7 +7,10 @@ export default defineConfig({
   	plugins: [react()],
 	resolve: {
 		alias: [
-			{find:'component',replacement:'/src/component'}
+			{find:'components',replacement:'/src/components'}
 		]
+	},
+	server: {
+		// port: 3000
 	}
 })
