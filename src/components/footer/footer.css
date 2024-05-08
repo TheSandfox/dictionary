@@ -1,0 +1,38 @@
+footer {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: var(--footer-height);
+	background-color: var(--color-sub);
+	box-shadow: 0 -4px 8px #0003;
+	&>.innerbox {
+		display: flex;
+		align-items: center;
+		gap:64px;
+		justify-content: flex-end;
+	}
+
+	& .footerWidget {
+		display: flex;
+		align-items: center;
+		gap: 4px;
+		cursor: pointer;
+		color:#333;
+		transition: 0.15s;
+		font-size: 20px;
+		&:hover {
+			filter: drop-shadow(0px 0px 0px #0003)
+		}
+	}
+	& .truncate:hover {
+		color:#c33;
+	}
+	& .add:hover {
+		color:#363;
+	}
+	& .addForm {
+		right: 16px;
+		bottom: calc(var(--footer-height) + 16px);
+	}
+}

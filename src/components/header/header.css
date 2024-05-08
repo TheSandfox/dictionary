@@ -1,0 +1,16 @@
+header {
+	background-color: var(--color-main);
+	display: flex;
+	align-items: center;
+	height:var(--header-height);
+	filter: drop-shadow(0 4px 8px #0003);
+	& .innerbox {
+		&>h1 {
+			font-size:32px;
+		}
+		align-items: center;
+		display: flex;
+		gap: 32px;
+		justify-content: space-between;
+	}
+}

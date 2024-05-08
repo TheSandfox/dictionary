@@ -1,0 +1,38 @@
+/* :root {
+	--color-main:#F5DAD2;
+	--color-main-light:#FCFFE0;
+	--color-sub-light:#BACD92;
+	--color-sub:#75A47F;
+} */
+:root {
+	--color-main:#61A3BA;
+	--color-main-light:#FFFFDD;
+	--color-sub-light:#D2DE32;
+	--color-sub:#A2C579;
+}
+
+:root {
+	--header-height:64px;
+	--footer-height:64px;
+}
+
+.innerbox {
+	width:1280px;
+	height:100%;
+	margin:0 auto;
+}
+
+.h100 {
+	height:100%;
+}
+
+.w100 {
+	width: 100%;
+}
+
+.iconButton {
+	font-size: 24px;
+	cursor: pointer;
+	color:#333;
+	transition:0.15s;
+}

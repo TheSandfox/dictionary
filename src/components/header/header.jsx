@@ -1,11 +1,16 @@
+import SearchForm from "components/word/searchform";
 import { Link } from "react-router-dom";
+import './header.css'
 
-export default function Header({handleDictionary}) {
+export default function Header({}) {
 	return <header>
-		<ul>
-			<li><Link to='/add'>단어만들기</Link></li>
-			<li><Link to='/list'>리스트으</Link></li>
-			<button onClick={handleDictionary.truncate}>다지우기</button>
-		</ul>
+		<div className="innerbox">
+			<h1 className="genericShadow">
+				<Link to='/'>
+				단어장.jsx
+				</Link>
+			</h1>
+			<SearchForm/>
+		</div>
 	</header>
 }

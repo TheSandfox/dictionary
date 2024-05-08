@@ -1,0 +1,8 @@
+* {
+	-webkit-font-smoothing:none;
+}
+
+button, input, select, option {
+	font-family: 'DungGeunMo';
+	font-size: 16px;
+}

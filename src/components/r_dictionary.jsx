@@ -10,7 +10,8 @@ const dictionaryDefault = {
 	// 	wordId:0,
 	// 	name:'wordName',
 	// 	description:'wordDescription',
-	//	date:100000000
+	//	date:100000000,
+	//	visible:true
 	// },
 	//워드 목록(로컬에서 가져오기)
 	words:JSON.parse(localStorage.getItem(`${wordsPrefix}`))
@@ -32,7 +33,11 @@ const dictionaryDefault = {
 	// },
 	//워드&태그 연결
 	wordTagLinks:JSON.parse(localStorage.getItem(`${wordTagLinksPrefix}`))
-		||[]
+		||[],
+
+	//결과값id
+	resultPrefix:'',
+	resultId:-1
 
 }
 
@@ -73,7 +78,8 @@ const dictionaryReducer = (state,action)=>{
 					return {
 						...word,
 						name: newWordName,
-						description: action.newWord.description
+						description: action.newWord.description,
+						visible:true
 					};
 				} else {
 					return word;
@@ -88,7 +94,8 @@ const dictionaryReducer = (state,action)=>{
 					wordId:newWordId,
 					name:newWordName,
 					description:action.newWord.description,
-					date:parseInt(new Date().getTime())
+					date:parseInt(new Date().getTime()),
+					visible:true
 				}
 			]
 		}
@@ -101,9 +108,13 @@ const dictionaryReducer = (state,action)=>{
 		newWordTagLinks = state.wordTagLinks.filter((wordTagLink)=>{
 			return parseInt(wordTagLink.wordId) !== parseInt(newWordId)
 		});
-		//태그입력(,)을 배열로 변환
-		let tagsArr = action.newWord.tags.split(',').map((tagName)=>{
+		//태그입력(,)을 배열로 변환->10개제한
+		let tagsSplit = action.newWord.tags.split(',').map((tagName)=>{
 			return tagName.trim();
+		}).slice(0,10);
+		let tagsArr = tagsSplit.filter((tagName,index)=>{
+			//중복자르기
+			return tagsSplit.indexOf(tagName) === index
 		}).filter((tagName)=>{
 			if (tagName.length>0 &&
 				!tagNames.includes(tagName)) 
@@ -143,7 +154,38 @@ const dictionaryReducer = (state,action)=>{
 			...state,
 			words: newWords,
 			tags: newTags,
-			wordTagLinks: newWordTagLinks
+			wordTagLinks: newWordTagLinks,
+			resultPrefix:action.newWord.redirect?'detail':'',
+			resultId:newWordId
+		}
+	case 'removeWord':
+		//선택 항목 비활성화
+		newWords = state.words.map((word)=>{
+			if(parseInt(word.wordId)===parseInt(action.wordId)){
+				return {
+					...word,
+					visible:false,
+					description:'삭제된 항목'
+				}
+			} else {
+				return {
+					...word
+				}
+			}
+		})
+		//단어태그연결 비워두기
+		newWordTagLinks = state.wordTagLinks.filter((wordTagLink)=>{
+			return parseInt(wordTagLink.wordId) !== parseInt(newWordId)
+		});
+		//로컬에 동기화
+		localStorage.setItem(`${wordsPrefix}`,JSON.stringify(newWords));
+		localStorage.setItem(`${wordTagLinksPrefix}`,JSON.stringify(newWordTagLinks));
+		return {
+			...state,
+			words: newWords,
+			wordTagLinks: newWordTagLinks,
+			resultPrefix:'',
+			resultId:newWordId
 		}
 	case 'addTag' :
 		//태그 추가
@@ -157,7 +199,9 @@ const dictionaryReducer = (state,action)=>{
 		localStorage.setItem(`${tagsPrefix}`,JSON.stringify(newWords))
 		return {
 			...state,
-			tags: newTags
+			tags: newTags,
+			resultPrefix:'',
+			resultId:-1
 		}
 	case 'wordTagLink':
 		//워드,태그 연결하기
@@ -171,7 +215,9 @@ const dictionaryReducer = (state,action)=>{
 		localStorage.setItem(`${wordTagLinksPrefix}`,JSON.stringify(newWordTagLinks))
 		return {
 			...state,
-			wordTagLinks: newWordTagLinks
+			wordTagLinks: newWordTagLinks,
+			resultPrefix:'',
+			resultId:-1
 		}
 	case 'wordTagUnlink':
 		//워드,태그 연결끊기
@@ -183,15 +229,20 @@ const dictionaryReducer = (state,action)=>{
 		localStorage.setItem(`${wordTagLinksPrefix}`,JSON.stringify(newWordTagLinks))
 		return {
 			...state,
-			wordTagLinks: newWordTagLinks
+			wordTagLinks: newWordTagLinks,
+			resultPrefix:'',
+			resultId:-1
 		}
 	case 'truncate':
+		//싹비우기
 		localStorage.clear();
 		return {
 			...dictionaryDefault,
 			words:[],
 			tags:[],
-			wordTagLinks:[]
+			wordTagLinks:[],
+			resultPrefix:'',
+			resultId:-1
 		}
 	default :
 	}

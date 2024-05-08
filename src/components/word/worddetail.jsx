@@ -1,15 +1,27 @@
 import { TagWidgets } from "components/tag/tagwidget";
 import { useMemo } from "react";
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 
 export default function WordDetail({handleDictionary}){
+	const navigate = useNavigate();
 	const params = useParams();
 	const word = params.wordId?handleDictionary.getWord(params.wordId):undefined;
 	const tags = useMemo(()=>{
-		return handleDictionary.getLinkedTags(word.wordId);
+		if(word) {
+			return handleDictionary.getLinkedTags(word.wordId);
+		} else {
+			return []
+		}
 	},[word])
-	return <>
+	const removeRequest = (wordId)=>{
+		if (!confirm('진짜로?')) {return;}
+		handleDictionary.removeWord(wordId);
+		navigate(`/list`);
+	}
+	return <div className="wordDetail innerbox">
 		{word?`${word.name} ${word.description}`:'not-found'}
-		<TagWidgets tags={tags.slice(0,5)}/>
-	</>
+		<button onClick={()=>{removeRequest(word.wordId)}}>삭제하기</button>
+		<button onClick={()=>{navigate(`/edit/${word.wordId}`)}}>수정하기</button>
+		<TagWidgets tags={tags} size={5}/>
+	</div>
 }

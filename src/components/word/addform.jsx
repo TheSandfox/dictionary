@@ -1,7 +1,10 @@
+import './addform.css'
 import { useMemo, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { IoCloseSharp } from "react-icons/io5";
 
-export default function AddForm({handleDictionary,editMode}) {
+export default function AddForm({handleDictionary,editMode,handleModal}) {
+	const navigate = useNavigate();
 	const wordId = useParams().wordId;
 	const nameInputRef = useRef(null);
 	const descriptionInputRef = useRef(null);
@@ -33,6 +36,13 @@ export default function AddForm({handleDictionary,editMode}) {
 	});
 	const handleNewForm = {
 		modify:(e)=>{
+			if(e.target.name==='nameInput'){
+				setNewForm({
+					...newForm,
+					[e.target.name]:e.target.value.trim().replaceAll(' ','')
+				})
+				return;
+			}
 			setNewForm({
 				...newForm,
 				[e.target.name]:e.target.value
@@ -54,19 +64,20 @@ export default function AddForm({handleDictionary,editMode}) {
 				name:newForm.nameInput,
 				description:newForm.descriptionInput,
 				tags:newForm.tagsInput,
-				wordId:newForm.idInput
+				wordId:newForm.idInput,
+				redirect:Boolean(!handleModal)
 			})
 		}
 	}
 	//RETURN JSX
-	return <><div>
+	return <><div className={`addForm${handleModal?' modal':' innerbox'}`}>
 		<label>이름</label>
 		<input 
 			type='text' 
 			name='nameInput' 
 			value={newForm.nameInput} 
 			onChange={handleNewForm.modify}
-			placeholder={'공백 무시됩니다.'}
+			placeholder={'공백 사용불가'}
 			ref={nameInputRef}
 		/>
 		<label>설명</label>
@@ -78,7 +89,17 @@ export default function AddForm({handleDictionary,editMode}) {
 			ref={descriptionInputRef}
 		/>
 		<label>태그</label>
-		<input type='text' name='tagsInput' value={newForm.tagsInput} onChange={handleNewForm.modify}/>
-		<button onClick={handleNewForm.submit}>추가하기</button>
+		<input 
+			type='text' 
+			name='tagsInput' 
+			value={newForm.tagsInput} 
+			onChange={handleNewForm.modify}
+			placeholder={'쉼표(,) 사용으로 여러 개 등록 가능(최대 10개)'}
+		/>
+		<button onClick={handleNewForm.submit}>{editMode?'저장':'추가'}</button>
+		{handleModal
+			?<IoCloseSharp onClick={handleModal.close}/>
+			:<></>
+		}
 	</div></>	
 }

@@ -1,0 +1,50 @@
+.tagWidget{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: 0.25s;
+	border-radius: 8px;
+	background-color: var(--color-main);
+	transition: 0.15s;
+	color: var(--color-sub-light);
+	&:hover {
+		background-color: var(--color-main-light);
+		color:#333;
+		box-shadow: 4px 4px 4px #0003;
+	}
+	& a {
+		width:100%;
+		height:100%;
+		padding: 4px 8px;
+		font-size: 16px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		/* &.badge {
+			font-size:0;
+		} */
+	}
+	& .hiddenText {
+		max-width: 0px;
+		overflow-x:hidden;
+		margin-left: 0;
+		transform: scaleX(0);
+		transition: 0.25s;
+	}
+	&:hover .hiddenText {
+		transform: scaleX(1);
+		max-width: 96px;
+		margin-left: 8px;
+		/* color:#fff; */
+	}
+	& .badgeIcon {
+		width:32px;
+		height:32px;
+	}
+}
+
+.tagWidgets {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}

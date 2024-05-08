@@ -1,0 +1,29 @@
+.wordWidget {
+	display: flex;
+	align-items: center;
+	/* justify-content: center; */
+	width:initial;
+	min-height: 48px;
+	gap: 8px;
+	transition: 0.15s;
+	border-radius: 8px;
+	padding:8px;
+	background-color: #0001;
+	&:hover {
+		background-color: var(--color-sub-light);
+	}
+	& .dateName {
+		display: block;
+		width: 320px;
+		height: 100%;
+		&>a {
+			&:hover {
+				color:#fff;
+			}
+			&>span {
+				margin-left: 32px;
+				font-size:20px;
+			}
+		}
+	}
+}
