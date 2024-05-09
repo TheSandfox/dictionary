@@ -1,11 +1,13 @@
 import Dictionary from 'components/dictionary'
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter, HashRouter } from 'react-router-dom'
 
 function App() {
 	return (
-		<BrowserRouter basename={'/dictionary'}>
+		<HashRouter>
+		{/* <BrowserRouter basename={'/dictionary'}> */}
 			<Dictionary/>
-		</BrowserRouter>
+		{/* </BrowserRouter> */}
+		</HashRouter>
 	)
 }
 

@@ -1,8 +1,9 @@
 {
-  "name": "dictionary",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
+	"name": "dictionary",
+	"private": true,
+	"version": "0.0.0",
+	"type": "module",
+	"homepage": "https://thesandfox.github.io/dictionary/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
