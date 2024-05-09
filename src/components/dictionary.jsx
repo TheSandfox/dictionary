@@ -120,7 +120,7 @@ export default function Dictionary(){
 		},[]),
 		//저장소 클리어
 		truncate:useCallback(()=>{
-			if(!confirm('진짜로?')){return;}
+			if(!confirm('로컬저장소를 초기화하고 기본 단어목록으로 변경합니다.\n계속 진행하시겠습니까?')){return;}
 			dispatchDictionary({
 				type:'truncate'
 			})

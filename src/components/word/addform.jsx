@@ -60,12 +60,12 @@ export default function AddForm({handleDictionary,editMode,handleModal}) {
 		submit:()=>{
 			//유효성 검사
 			if(newForm.nameInput.trim().replaceAll(' ','')==='') {
-				alert('이름을 빼먹었다구');
+				alert('단어 이름을 입력해주세요');
 				nameInputRef.current.focus();
 				return;
 			}
 			if(newForm.descriptionInput.trim()==='') {
-				alert('설명을 빼먹었다구');
+				alert('단어 설명을 입력해주세요');
 				descriptionInputRef.current.focus();
 				preventLinkBreak.current = true;
 				return;
@@ -147,16 +147,16 @@ export default function AddForm({handleDictionary,editMode,handleModal}) {
 			</div>
 			<div className={'genericButton clear'} onClick={handleNewForm.clear}>
 				<IoRefresh/>
-				{'비우기'}
+				{editMode?'되돌리기':'비우기'}
 			</div>
 			{handleModal
 			?<div className={'genericButton close'} onClick={handleModal.close}>
 				<IoCloseSharp/>
 				{'취소/닫기'}
 			</div>
-			:<div className={'genericButton close'} onClick={()=>{navigate(-1)}}>
+			:<div className={'genericButton back'} onClick={()=>{navigate(-1)}}>
 			<IoArrowBackOutline/>
-			{'뒤로가기'}
+			{'돌아가기'}
 		</div>
 			}
 		</div>

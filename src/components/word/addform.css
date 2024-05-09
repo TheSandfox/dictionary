@@ -57,14 +57,5 @@
 		display: flex;
 		gap: 8px;
 		justify-content:flex-end;
-		&>.add {
-			background-color: #393;
-		}
-		&>.clear {
-			background-color: #39c;
-		}
-		&>.close {
-			background-color: #c33;
-		}
 	}
 }

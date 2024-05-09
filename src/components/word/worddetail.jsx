@@ -18,14 +18,15 @@ export default function WordDetail({handleDictionary}){
 		}
 	},[word])
 	const removeRequest = (wordId)=>{
-		if (!confirm('진짜로?')) {return;}
+		if (!confirm(`'${word.name}' 단어를 삭제할까요?`)) {return;}
 		handleDictionary.removeWord(wordId);
 		navigate(`/list`);
 	}
 	return <div className="wordDetail innerbox">
 		{word
+			//단어&설명 
 			?<>
-				<div className='title'>{word.name}:</div>
+				<div className='title genericShadow2px'>{word.name}:</div>
 				<div>{word.description}</div>
 			</>
 			:'not-found'

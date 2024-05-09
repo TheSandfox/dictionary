@@ -1,6 +1,7 @@
 import './wordlist.css'
 import WordWidget from "components/word/wordwidget"
 import { Fragment } from "react";
+import { IoRefresh } from 'react-icons/io5';
 import { useNavigate, useParams } from "react-router-dom";
 
 export default function WordList({handleDictionary}) {
@@ -19,7 +20,12 @@ export default function WordList({handleDictionary}) {
 	}
 	return <div className={'innerbox wordList'}>
 		{reset
-			?<div onClick={()=>{navigate('/')}}>필터 초기화</div>
+			?<div 
+				className={'genericButton clear'}
+				onClick={()=>{navigate('/')}}>
+				<IoRefresh/>
+				필터 초기화
+			</div>
 			:<></>
 		}
 		{(words&&words.length>0)
