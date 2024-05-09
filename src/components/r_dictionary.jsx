@@ -15,7 +15,7 @@ const dictionaryDefault = {
 	// },
 	//워드 목록(로컬에서 가져오기)
 	words:JSON.parse(localStorage.getItem(`${wordsPrefix}`))
-		||[],
+		||[{"wordId":0,"name":"리액트","description":"굉장히 좋은 프레임워크","date":1715152940750,"visible":true},{"wordId":1,"name":"자바스크립트","description":"브라우저 최적화 언어","date":1715157706288,"visible":true},{"wordId":2,"name":"jquery","description":"체이닝 특화 js라이브러리","date":1715158102929,"visible":true},{"wordId":3,"name":"node.js","description":"자바 런타임 패키지","date":1715215381683,"visible":true},{"wordId":4,"name":"딸기","description":"(딸기설명)","date":1715215452835,"visible":true},{"wordId":5,"name":"바나나","description":"키우면 탑승이 가능한 과일","date":1715215472083,"visible":true},{"wordId":6,"name":"키위","description":"키우면 새가 되는 과일","date":1715215725803,"visible":true},{"wordId":7,"name":"파인애플","description":"흉기로 사용할 수 있는 과일","date":1715217543406,"visible":true},{"wordId":8,"name":"두리안","description":"흉기로 사용할 수 있는 과일,\n냄새가 굉장히 고약하다.","date":1715217574095,"visible":true},{"wordId":9,"name":"당근","description":"달짝지근한 맛이 나는 야채","date":1715217839925,"visible":true},{"wordId":10,"name":"베가아이언","description":"흉기로 사용할 수 있는 스마트폰","date":1715217891789,"visible":true},{"wordId":11,"name":"베가아이언2","description":"삭제된 항목","date":1715218090360,"visible":false},{"wordId":12,"name":"도도새","description":"귀여운 새","date":1715218356851,"visible":true},{"wordId":13,"name":"dd","description":"삭제된 항목","date":1715218701559,"visible":false},{"wordId":14,"name":"dda","description":"삭제된 항목","date":1715218702935,"visible":false}],
 
 	//태그 템플릿
 	// tagTemplate:{
@@ -24,7 +24,7 @@ const dictionaryDefault = {
 	// },
 	//태그 목록(로컬에서 가져오기)
 	tags:JSON.parse(localStorage.getItem(`${tagsPrefix}`))
-		||[],
+		||[{"tagId":0,"name":"react"},{"tagId":1,"name":"프레임워크"},{"tagId":2,"name":"js"},{"tagId":3,"name":"node"},{"tagId":4,"name":"jsx"},{"tagId":5,"name":"html"},{"tagId":6,"name":"css"},{"tagId":7,"name":"script"},{"tagId":8,"name":"라이브러리"},{"tagId":9,"name":"과일"},{"tagId":10,"name":"과일일"},{"tagId":11,"name":"무기"},{"tagId":12,"name":"화학"},{"tagId":13,"name":"조류"},{"tagId":14,"name":"탈것"},{"tagId":15,"name":"야채"},{"tagId":16,"name":"스마트폰"}],
 
 	//워드&태그 연결 템플릿(id와 id를 받으므로 둘 다 정수)
 	// wordTagLinkTemplate:{
@@ -33,7 +33,7 @@ const dictionaryDefault = {
 	// },
 	//워드&태그 연결
 	wordTagLinks:JSON.parse(localStorage.getItem(`${wordTagLinksPrefix}`))
-		||[],
+		||[{"wordId":1,"tagId":2},{"wordId":1,"tagId":7},{"wordId":2,"tagId":2},{"wordId":2,"tagId":1},{"wordId":2,"tagId":8},{"wordId":3,"tagId":3},{"wordId":3,"tagId":2},{"wordId":4,"tagId":9},{"wordId":7,"tagId":9},{"wordId":7,"tagId":11},{"wordId":8,"tagId":9},{"wordId":8,"tagId":11},{"wordId":8,"tagId":12},{"wordId":6,"tagId":9},{"wordId":6,"tagId":13},{"wordId":5,"tagId":9},{"wordId":5,"tagId":14},{"wordId":9,"tagId":15},{"wordId":10,"tagId":16},{"wordId":10,"tagId":11},{"wordId":11,"tagId":16},{"wordId":11,"tagId":11},{"wordId":12,"tagId":13},{"wordId":0,"tagId":0},{"wordId":0,"tagId":2},{"wordId":0,"tagId":5},{"wordId":0,"tagId":6},{"wordId":0,"tagId":3}],
 
 	//결과값id
 	resultPrefix:'',

@@ -1,9 +1,14 @@
 header {
+	position: fixed;
+	top:0;
+	left:0;
+	width:100%;
 	background-color: var(--color-main);
 	display: flex;
 	align-items: center;
 	height:var(--header-height);
 	filter: drop-shadow(0 4px 8px #0003);
+	z-index: 8192;
 	& .innerbox {
 		&>h1 {
 			font-size:32px;

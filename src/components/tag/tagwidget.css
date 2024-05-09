@@ -20,11 +20,12 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		/* &.badge {
+		&.badge {
 			font-size:0;
-		} */
+		}
 	}
 	& .hiddenText {
+		font-size:16px;
 		max-width: 0px;
 		overflow-x:hidden;
 		margin-left: 0;

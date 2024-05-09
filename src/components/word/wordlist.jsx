@@ -1,19 +1,27 @@
 import './wordlist.css'
 import WordWidget from "components/word/wordwidget"
 import { Fragment } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 export default function WordList({handleDictionary}) {
+	const navigate = useNavigate();
 	let words = [];
+	let reset = false;
 	const params = useParams();
 	if (params.tagName) {
 		words = handleDictionary.searchWordsByTagName(decodeURI(params.tagName));
+		reset = true;
 	} else if (params.keyword) {
 		words = handleDictionary.searchWordsByKeyword(decodeURI(params.keyword));
+		reset = true;
 	} else {
 		words = handleDictionary.getWords();
 	}
 	return <div className={'innerbox wordList'}>
+		{reset
+			?<div onClick={()=>{navigate('/')}}>필터 초기화</div>
+			:<></>
+		}
 		{(words&&words.length>0)
 			?words
 			.filter((word)=>{

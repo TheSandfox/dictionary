@@ -1,0 +1,24 @@
+.wordDetail {
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+	& .title {
+		font-size: 32px;
+	}
+	& .genericButton {
+		&.delete {
+			background-color: #c33;
+		}
+		&.edit {
+			background-color: #393;
+		}
+		&.back {
+			background-color: #c33;
+		}
+	}
+	& .buttonContainer {
+		display: flex;
+		/* justify-content: flex-end; */
+		gap: 8px;
+	}
+}

@@ -1,5 +1,9 @@
+import './worddetail.css'
 import { TagWidgets } from "components/tag/tagwidget";
 import { useMemo } from "react";
+import { IoArrowBackOutline } from 'react-icons/io5';
+import { MdEdit } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
 import { useNavigate, useParams } from "react-router-dom"
 
 export default function WordDetail({handleDictionary}){
@@ -19,9 +23,27 @@ export default function WordDetail({handleDictionary}){
 		navigate(`/list`);
 	}
 	return <div className="wordDetail innerbox">
-		{word?`${word.name} ${word.description}`:'not-found'}
-		<button onClick={()=>{removeRequest(word.wordId)}}>삭제하기</button>
-		<button onClick={()=>{navigate(`/edit/${word.wordId}`)}}>수정하기</button>
-		<TagWidgets tags={tags} size={5}/>
+		{word
+			?<>
+				<div className='title'>{word.name}:</div>
+				<div>{word.description}</div>
+			</>
+			:'not-found'
+		}
+		<TagWidgets tags={tags} size={10} expandInitial={true}/>
+		<div className='buttonContainer'>
+			<div className={'genericButton edit'} onClick={()=>{navigate(`/edit/${word.wordId}`)}}>
+				<MdEdit/>
+				수정하기
+			</div>
+			<div className={'genericButton delete'} onClick={()=>{removeRequest(word.wordId)}}>
+				<MdDelete/>
+				삭제하기
+			</div>
+			<div className={'genericButton back'} onClick={()=>{navigate(-1)}}>
+				<IoArrowBackOutline/>
+				돌아가기
+			</div>
+		</div>
 	</div>
 }

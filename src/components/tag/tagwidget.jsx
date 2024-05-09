@@ -10,12 +10,12 @@ export default function TagWidget({tag}){
 	},[tag]);
 	return <div className={"tagWidget fontRadialMo"+(logoProps?' '+tag.name.toLowerCase():'')}>
 		<Link 
-			className={logoProps?'badge':''}
+			className={`${logoProps?' badge':''}`}
 			to={`/list/query/tag/${encodeURI(tag.name)}`}>
 			{
 				logoProps
 				?<>
-					<img className='badgeIcon' src={logoProps.imgPath} alt={tag.name}/>
+					<img className='badgeIcon genericShadow2px' src={logoProps.imgPath} alt={tag.name}/>
 					<div className='hiddenText'>#{tag.name}</div>
 				</>
 				:'#'+tag.name
@@ -24,8 +24,8 @@ export default function TagWidget({tag}){
 	</div>;
 }
 
-function TagWidgets({tags,className}){
-	const [expand,setExpand] = useState(false);
+function TagWidgets({tags,className,expandInitial}){
+	const [expand,setExpand] = useState(expandInitial!==undefined&&expandInitial);
 	const size = useMemo(()=>{
 		return (expand?10:5)
 	},[expand]);

@@ -36,3 +36,18 @@
 	color:#333;
 	transition:0.15s;
 }
+
+.genericButton {
+	display: flex;
+	align-items: center;
+	padding: 8px;
+	border-radius: 8px;
+	color: #fff;
+	user-select: none;
+	cursor: pointer;
+	font-size: 18px;
+	transition: 0.15s;
+	&:hover {
+		filter:brightness(1.1);
+	}
+}

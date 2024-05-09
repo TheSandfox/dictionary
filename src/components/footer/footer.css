@@ -6,6 +6,7 @@ footer {
 	height: var(--footer-height);
 	background-color: var(--color-sub);
 	box-shadow: 0 -4px 8px #0003;
+	z-index: 8192;
 	&>.innerbox {
 		display: flex;
 		align-items: center;
@@ -21,6 +22,7 @@ footer {
 		color:#333;
 		transition: 0.15s;
 		font-size: 20px;
+		user-select: none;
 		&:hover {
 			filter: drop-shadow(0px 0px 0px #0003)
 		}
@@ -28,7 +30,7 @@ footer {
 	& .truncate:hover {
 		color:#c33;
 	}
-	& .add:hover {
+	& .add:hover:not(.genericButton) {
 		color:#363;
 	}
 	& .addForm {
