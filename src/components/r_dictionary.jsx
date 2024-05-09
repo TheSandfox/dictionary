@@ -152,7 +152,7 @@ const dictionaryReducer = (state,action)=>{
 			words: newWords,
 			tags: newTags,
 			wordTagLinks: newWordTagLinks,
-			resultPrefix:action.newWord.redirect?'detail':'',
+			resultPrefix:action.newWord.redirect?'edit':'',
 			resultId:newWordId
 		}
 	case 'removeWord':

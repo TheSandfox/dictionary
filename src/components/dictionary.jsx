@@ -42,6 +42,17 @@ export default function Dictionary(){
 		getTags:()=>{
 			return dictionary.tags;
 		},
+		//단어와의 연결이 하나라도 있는 태그들 가져오기
+		getAvailableTags:()=>{
+			let tagIdArr = dictionary.wordTagLinks.map((wordTagLink)=>{
+				return wordTagLink.tagId;
+			})
+			return tagIdArr.filter((tagId,index)=>{
+				return tagIdArr.indexOf(tagId)===index;
+			}).map((tagId)=>{
+				return dictionary.tags[tagId];
+			});
+		},
 		//연결된 태그들 getter(문자열array)
 		getLinkedTags:(wordId)=>{
 			return dictionary.wordTagLinks.filter((wordTagLink)=>{
@@ -129,8 +140,8 @@ export default function Dictionary(){
 	useEffect(()=>{
 		if (dictionary.resultPrefix.length>0) {
 			switch (dictionary.resultPrefix) {
-			case 'detail':
-				navigate(`/detail/${dictionary.resultId}`);
+			case 'edit':
+				navigate(-1);
 				break;	
 			}
 		}

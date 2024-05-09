@@ -21,6 +21,6 @@ export default function WordWidget({word,handleDictionary}) {
 				<span>{word?word.name:''}</span>
 			</Link>
 		</div>
-		{<TagWidgets tags={tags}/>}
+		{(tags.length>0)?<TagWidgets tags={tags}/>:null}
 	</div>
 }

@@ -1,7 +1,9 @@
 .wordWidget {
 	display: flex;
-	align-items: center;
-	/* justify-content: center; */
+	flex-direction: column;
+	justify-content: flex-start;
+	/* align-items: center; */
+	justify-content: center;
 	width:initial;
 	min-height: 48px;
 	gap: 8px;
@@ -13,16 +15,19 @@
 		background-color: var(--color-sub-light);
 	}
 	& .dateName {
-		display: block;
-		width: 320px;
+		display: flex;
+		/* width: 256px; */
 		height: 100%;
+		align-items: center;
 		&>a {
+			display: flex;
+			align-items: center;
 			&:hover {
 				color:#fff;
 			}
 			&>span {
 				margin-left: 32px;
-				font-size:20px;
+				font-size:22px;
 			}
 		}
 	}

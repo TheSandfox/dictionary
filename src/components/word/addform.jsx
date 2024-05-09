@@ -83,8 +83,10 @@ export default function AddForm({handleDictionary,editMode,handleModal}) {
 	const enterCallback = (e)=>{
 		preventLinkBreak.current = false;
 		if(e.keyCode!==13){return;}
+		if(e.shiftKey){return;}
 		handleNewForm.submit();
 	}
+	//창닫기 버튼 입력 시
 	useEffect(()=>{
 		const escapeCallback = (e)=>{
 			if(e.keyCode!==27) {return;}
@@ -99,6 +101,10 @@ export default function AddForm({handleDictionary,editMode,handleModal}) {
 			window.removeEventListener('keydown',escapeCallback);
 		}
 	},[handleModal])
+	//마운트시 포커싱
+	useEffect(()=>{
+		nameInputRef.current.select();
+	},[])
 	//RETURN JSX
 	return <><div className={`addForm${handleModal?' modal':' innerbox'}`}>
 		<div className='top'>
@@ -125,6 +131,7 @@ export default function AddForm({handleDictionary,editMode,handleModal}) {
 					value={newForm.descriptionInput} 
 					onChange={handleNewForm.modify}
 					onKeyDown={enterCallback}
+					placeholder='줄띄움 시 shift+Enter 입력'
 					ref={descriptionInputRef}
 				/>
 			</div>

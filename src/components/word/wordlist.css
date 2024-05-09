@@ -1,6 +1,27 @@
 .wordList {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	gap: 16px;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 64px;
+	height: 100%;
+	&>.left {
+		height: 100%;
+		overflow-y: scroll;
+		flex-direction: column;
+		&>.words {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 16px;
+		}
+	}
+	&>.right {
+		&>.tagWidgets {
+			border-radius: 16px;
+			background-color: #0001;
+			padding: 8px;
+			& .tagWidget:hover .hiddenText {
+				display: none;
+			}
+		}
+	}
 }

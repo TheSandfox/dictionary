@@ -48,4 +48,11 @@
 	display: flex;
 	align-items: center;
 	gap: 8px;
+	&.freestyle {
+		align-items: initial;
+		flex-wrap: wrap;
+	}
+	&>.tagWidget {
+		display: inline-block;
+	}
 }
