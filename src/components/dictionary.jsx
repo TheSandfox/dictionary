@@ -129,9 +129,16 @@ export default function Dictionary(){
 				tagId:tagId
 			})
 		},[]),
+		//기본값으로 되돌리기
+		reset:useCallback(()=>{
+			if(!confirm('로컬저장소를 초기화하고 기본 단어목록으로 변경합니다.\n계속 진행하시겠습니까?')){return;}
+			dispatchDictionary({
+				type:'reset'
+			})
+		},[]),
 		//저장소 클리어
 		truncate:useCallback(()=>{
-			if(!confirm('로컬저장소를 초기화하고 기본 단어목록으로 변경합니다.\n계속 진행하시겠습니까?')){return;}
+			if(!confirm('기본 단어목록을 포함한 모든 단어를 제거합니다.\n계속 진행하시겠습니까?')){return;}
 			dispatchDictionary({
 				type:'truncate'
 			})

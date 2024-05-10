@@ -37,4 +37,8 @@ footer {
 		right: 16px;
 		bottom: calc(var(--footer-height) + 16px);
 	}
+	& .deleteForm {
+		right: 16px;
+		bottom: calc(var(--footer-height) + 16px);
+	}
 }

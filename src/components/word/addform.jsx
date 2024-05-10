@@ -5,10 +5,11 @@ import { IoCloseSharp, IoRefresh } from "react-icons/io5";
 import { IoMdAdd } from "react-icons/io";
 import { IoArrowBackOutline } from "react-icons/io5";
 
-export default function AddForm({handleDictionary,editMode,handleModal}) {
+export default function AddForm({handleDictionary,editMode,handleDisplayAdd}) {
 	const navigate = useNavigate();
 	const preventLinkBreak = useRef(false);
 	const wordId = useParams().wordId;
+	const containerRef = useRef(null);
 	const nameInputRef = useRef(null);
 	const descriptionInputRef = useRef(null);
 	const word = useMemo(()=>{
@@ -17,7 +18,7 @@ export default function AddForm({handleDictionary,editMode,handleModal}) {
 		} else {
 			return undefined;
 		}
-	},[editMode])
+	},[editMode]);
 	//인풋창&핸들러
 	const newFormDefault = word
 	?{
@@ -76,7 +77,7 @@ export default function AddForm({handleDictionary,editMode,handleModal}) {
 				description:newForm.descriptionInput,
 				tags:newForm.tagsInput,
 				wordId:newForm.idInput,
-				redirect:Boolean(!handleModal)
+				redirect:Boolean(!handleDisplayAdd)
 			})
 		}
 	}
@@ -90,8 +91,8 @@ export default function AddForm({handleDictionary,editMode,handleModal}) {
 	useEffect(()=>{
 		const escapeCallback = (e)=>{
 			if(e.keyCode!==27) {return;}
-			if(handleModal) {
-				handleModal.close();
+			if(handleDisplayAdd) {
+				handleDisplayAdd.close();
 			}
 		}
 
@@ -100,13 +101,28 @@ export default function AddForm({handleDictionary,editMode,handleModal}) {
 		return ()=>{
 			window.removeEventListener('keydown',escapeCallback);
 		}
-	},[handleModal])
-	//마운트시 포커싱
+	},[handleDisplayAdd])
+	//마운트시 포커싱&바깥클릭 리스너 추가
 	useEffect(()=>{
 		nameInputRef.current.select();
-	},[])
+
+		const clickCallback = (e)=>{
+			console.log('옹');
+			if (e.button!==0) {return;}
+			if (!handleDisplayAdd) {return;}
+			if (e.target===containerRef.current||containerRef.current.contains(e.target)) {return;}
+			handleDisplayAdd.close();
+		}
+
+		window.addEventListener('mousedown',clickCallback);
+		
+		return ()=>{
+			window.removeEventListener('mousedown',clickCallback);
+		}
+
+	},[handleDisplayAdd])
 	//RETURN JSX
-	return <><div className={`addForm${handleModal?' modal':' innerbox'}`}>
+	return <><div ref={containerRef} className={`addForm${handleDisplayAdd?' modal':' innerbox'}`}>
 		<div className='top'>
 			<div className='infoTitle'>
 				{editMode?'수정하기':'새로 만들기'}
@@ -156,8 +172,8 @@ export default function AddForm({handleDictionary,editMode,handleModal}) {
 				<IoRefresh/>
 				{editMode?'되돌리기':'비우기'}
 			</div>
-			{handleModal
-			?<div className={'genericButton close'} onClick={handleModal.close}>
+			{handleDisplayAdd
+			?<div className={'genericButton close'} onClick={handleDisplayAdd.close}>
 				<IoCloseSharp/>
 				{'취소/닫기'}
 			</div>

@@ -1,0 +1,24 @@
+.deleteForm {
+	position: fixed;
+	/* width: 640px; */
+	border-radius: 16px;
+	background-color: var(--color-sub);
+	padding:32px;
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+	&>.top {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		&>select {
+			width:100%;
+		}
+	}
+	&>.bottom {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		gap: 8px;
+	}
+}

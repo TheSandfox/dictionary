@@ -3,19 +3,31 @@ import { IoMdAdd } from "react-icons/io";
 import './footer.css'
 import { useState } from "react";
 import AddForm from "components/word/addform";
+import DeleteForm from "components/word/deleteform";
 
 export default function Footer({handleDictionary}) {
 	const [displayAdd,setDisplayAdd] = useState(false);
+	const [displayDelete,setDisplayDelete] = useState(false);
 	const handleDisplayAdd = {
 		toggle:()=>{
+			if(!displayAdd) {setDisplayDelete(false)}
 			setDisplayAdd(
 				!displayAdd
 			);
-		}
-	}
-	const handleModal = {
+		},
 		close:()=>{
 			setDisplayAdd(false);
+		}
+	}
+	const handleDisplayDelete = {
+		toggle:()=>{
+			if(!displayDelete) {setDisplayAdd(false)}
+			setDisplayDelete(
+				!displayDelete
+			);
+		},
+		close:()=>{
+			setDisplayDelete(false);
 		}
 	}
 	return <footer>
@@ -26,7 +38,8 @@ export default function Footer({handleDictionary}) {
 				/>
 				단어 추가하기
 			</div>
-			<div className="footerWidget truncate genericShadow2px" onClick={handleDictionary.truncate}>
+			{/* <DeleteForm handleTruncate={handleDictionary.truncate}/> */}
+			<div className="footerWidget truncate genericShadow2px" onClick={handleDisplayDelete.toggle} >
 				<MdDelete
 					title={'데이터 초기화'} 
 				/>
@@ -35,7 +48,12 @@ export default function Footer({handleDictionary}) {
 		</div>
 		{
 			displayAdd
-			?<AddForm handleDictionary={handleDictionary} handleModal={handleModal}/>
+			?<AddForm handleDictionary={handleDictionary} handleDisplayAdd={handleDisplayAdd}/>
+			:<></>
+		}
+		{
+			displayDelete
+			?<DeleteForm handleDictionary={handleDictionary} handleDisplayDelete={handleDisplayDelete}/>
 			:<></>
 		}
 	</footer>

@@ -230,9 +230,20 @@ const dictionaryReducer = (state,action)=>{
 			resultPrefix:'',
 			resultId:-1
 		}
-	case 'truncate':
-		//싹비우기
+	case 'reset':
+		//기본값으로
 		localStorage.clear();
+		return {
+			...dictionaryDefault,
+			resultPrefix:'',
+			resultId:-1
+		}
+	case 'truncate':
+		//진심비우기
+		//로컬에 동기화
+		localStorage.setItem(`${wordsPrefix}`,JSON.stringify([]));
+		localStorage.setItem(`${tagsPrefix}`,JSON.stringify([]));
+		localStorage.setItem(`${wordTagLinksPrefix}`,JSON.stringify([]));
 		return {
 			...dictionaryDefault,
 			words:[],
