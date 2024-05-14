@@ -27,8 +27,9 @@ export default function WordList({handleDictionary}) {
 	}
 	const tags = useMemo(()=>{
 		return shuffle(handleDictionary.getAvailableTags()).slice(0,64);
-	},[])
+	},[words])
 	return <div className={'innerbox wordList'}>
+		{/* 좌측 워드리스트 */}
 		<div className={'left'}>
 			<div className='words'>
 				{reset
@@ -54,6 +55,7 @@ export default function WordList({handleDictionary}) {
 				}
 			</div>
 		</div>
+		{/* 우측 태그위젯 */}
 		<div className={'right'}>
 			<TagWidgets tags={tags} className={'freestyle'} expandInitial={true}/>
 		</div>

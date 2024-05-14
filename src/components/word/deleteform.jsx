@@ -17,9 +17,11 @@ export default function DeleteForm({handleDictionary,handleDisplayDelete}) {
 			<div className={'genericButton add'} onClick={()=>{
 				switch(method) {
 				case '0':
-					handleDictionary.reset()
+					handleDictionary.reset();
+					break;
 				case '1':
-					handleDictionary.truncate()
+					handleDictionary.truncate();
+					break;
 				default:
 				}
 			}}>

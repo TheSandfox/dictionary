@@ -28,7 +28,7 @@ export default function TagWidget({tag}){
 function TagWidgets({tags,className,expandInitial}){
 	const [expand,setExpand] = useState(expandInitial!==undefined&&expandInitial);
 	const size = useMemo(()=>{
-		return (expand?Infinity:5)
+		return (expand?Infinity:5);
 	},[expand]);
 	return <div className={`tagWidgets${className?` ${className}`:''}`}>
 		{
@@ -41,7 +41,7 @@ function TagWidgets({tags,className,expandInitial}){
 			?<IoEllipsisHorizontal className="tagWidgetsEllipsis" onClick={()=>{setExpand(true);}}/>
 			:<></>
 		}
-	</div>
+	</div>;
 }
 
 export {TagWidget,TagWidgets}

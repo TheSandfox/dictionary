@@ -13,6 +13,13 @@
 		display: flex;
 		flex-direction: column;
 		/* justify-content: space-between; */
+		@media screen and (max-width:671px) {
+			width: calc(100% - 32px);
+			margin: 0 auto;
+			&>.bottom {
+				flex-direction: column;
+			}
+		}
 	}
 	/* 공통 */
 	&>.top{

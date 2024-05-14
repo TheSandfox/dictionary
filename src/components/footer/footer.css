@@ -12,6 +12,9 @@ footer {
 		align-items: center;
 		gap:64px;
 		justify-content: flex-end;
+		@media screen and (max-width:1023px) {
+			gap:16px;
+		}
 	}
 
 	& .footerWidget {
@@ -20,11 +23,18 @@ footer {
 		gap: 4px;
 		cursor: pointer;
 		color:#333;
-		transition: 0.15s;
+		transition: color 0.15s;
 		font-size: 20px;
 		user-select: none;
+		overflow-x: hidden;
 		&:hover {
 			filter: drop-shadow(0px 0px 0px #0003)
+		}
+		@media screen and (max-width:1023px) {
+			font-size: 32px;
+			&>span{
+				display: none;
+			}
 		}
 	}
 	& .truncate:hover {

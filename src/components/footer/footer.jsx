@@ -10,7 +10,7 @@ export default function Footer({handleDictionary}) {
 	const [displayDelete,setDisplayDelete] = useState(false);
 	const handleDisplayAdd = {
 		toggle:()=>{
-			if(!displayAdd) {setDisplayDelete(false)}
+			if(!displayAdd) {setDisplayDelete(false);}
 			setDisplayAdd(
 				!displayAdd
 			);
@@ -36,14 +36,14 @@ export default function Footer({handleDictionary}) {
 				<IoMdAdd
 					title={'단어 추가하기'} 
 				/>
-				단어 추가하기
+				<span>단어 추가하기</span>
 			</div>
 			{/* <DeleteForm handleTruncate={handleDictionary.truncate}/> */}
 			<div className="footerWidget truncate genericShadow2px" onClick={handleDisplayDelete.toggle} >
 				<MdDelete
 					title={'데이터 초기화'} 
 				/>
-				데이터 초기화
+				<span>데이터 초기화</span>
 			</div>
 		</div>
 		{
