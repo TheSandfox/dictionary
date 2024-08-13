@@ -1,6 +1,6 @@
 import './searchform.css'
-import { IoSearchSharp } from "react-icons/io5";
-import { IoRefresh } from "react-icons/io5";
+import { FaSearch } from "react-icons/fa";
+import { FaRedo } from "react-icons/fa";
 
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
@@ -59,7 +59,10 @@ export default function SearchForm({}) {
 		}
 	}
 	return <div className="searchForm">
-		<label>검색하기:</label>
+		<select className='selectMode' value={searchMode} onChange={handleSearchMode.set}>
+			<option value={'keyword'}>단어/설명</option>
+			<option value={'tag'}>태그</option>
+		</select>
 		<input 
 			type="text" 
 			name="keyword" 
@@ -67,11 +70,7 @@ export default function SearchForm({}) {
 			onChange={handleInputValue.modify}
 			onKeyDown={enterCallback}
 		/>
-		<select className='selectMode' value={searchMode} onChange={handleSearchMode.set}>
-			<option value={'keyword'}>단어/설명</option>
-			<option value={'tag'}>태그</option>
-		</select>
-		<IoSearchSharp onClick={submit} className={'iconButton search'} title={'검색하기'}/>
-		<IoRefresh onClick={clear} className={'iconButton clear'} title={'필터초기화'}/>
+		<FaSearch onClick={submit} className={'iconButton search genericShadow2px'} title={'검색하기'}/>
+		<FaRedo onClick={clear} className={'iconButton clear genericShadow2px'} title={'필터초기화'}/>
 	</div>
 }

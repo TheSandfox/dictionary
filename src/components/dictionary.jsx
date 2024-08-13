@@ -1,12 +1,12 @@
 import { useCallback, useEffect, useReducer, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { dictionaryDefault, dictionaryReducer } from "./r_dictionary";
-import AddForm from "components/word/addform";
-import Header from "components/header/header";
-import WordList from "components/word/wordlist";
-import WordDetail from "components/word/worddetail";
+import AddForm from "/src/components/word/addform";
+import Header from "/src/components/header/header";
+import WordList from "/src/components/word/wordlist";
+import WordDetail from "/src/components/word/worddetail";
 import appContext from "/src/appcontext";
-import Footer from "components/footer/footer";
+import Footer from "/src/components/footer/footer";
 
 export default function Dictionary(){
 	const navigate = useNavigate();

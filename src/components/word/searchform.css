@@ -2,4 +2,26 @@
 	display: flex;
 	align-items: center;
 	gap:16px;
+	&>svg {
+		width: 16px;
+		height: 16px;
+	}
+	&>.search {
+		transition: 0.25s;
+		&:hover {
+			transform: scale(1.15);
+		}
+	}
+	&>.clear {
+		transition: 0.45s;
+		&:hover {
+			transform: rotate(360deg);
+		}
+	}
+	@media screen and (max-width:1023px) {
+		flex: 1;
+		&>input {
+			flex: 1;
+		}
+	}
 }

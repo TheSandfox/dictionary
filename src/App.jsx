@@ -1,5 +1,5 @@
-import Dictionary from 'components/dictionary'
-import { BrowserRouter, HashRouter } from 'react-router-dom'
+import Dictionary from './components/dictionary'
+import { HashRouter } from 'react-router-dom'
 
 function App() {
 	return (

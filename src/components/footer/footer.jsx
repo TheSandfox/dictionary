@@ -1,9 +1,9 @@
-import { MdDelete } from "react-icons/md";
-import { IoMdAdd } from "react-icons/io";
+import { FaTrash } from "react-icons/fa";
+import { FaPlus } from "react-icons/fa";
 import './footer.css'
 import { useState } from "react";
-import AddForm from "components/word/addform";
-import DeleteForm from "components/word/deleteform";
+import AddForm from "/src/components/word/addform";
+import DeleteForm from "/src/components/word/deleteform";
 
 export default function Footer({handleDictionary}) {
 	const [displayAdd,setDisplayAdd] = useState(false);
@@ -33,14 +33,14 @@ export default function Footer({handleDictionary}) {
 	return <footer>
 		<div className="innerbox">
 			<div className="footerWidget add genericShadow2px" onClick={handleDisplayAdd.toggle}>
-				<IoMdAdd
+				<FaPlus
 					title={'단어 추가하기'} 
 				/>
 				<span>단어 추가하기</span>
 			</div>
 			{/* <DeleteForm handleTruncate={handleDictionary.truncate}/> */}
 			<div className="footerWidget truncate genericShadow2px" onClick={handleDisplayDelete.toggle} >
-				<MdDelete
+				<FaTrash
 					title={'데이터 초기화'} 
 				/>
 				<span>데이터 초기화</span>

@@ -1,5 +1,5 @@
 import './wordwidget.css'
-import { TagWidgets } from "components/tag/tagwidget";
+import { TagWidgets } from "/src/components/tag/tagwidget";
 import { useMemo } from "react"
 import { Link } from "react-router-dom";
 

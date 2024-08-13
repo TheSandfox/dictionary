@@ -1,6 +1,6 @@
-import TagWidget, { TagWidgets } from 'components/tag/tagwidget';
+import TagWidget, { TagWidgets } from '/src/components/tag/tagwidget';
 import './wordlist.css'
-import WordWidget from "components/word/wordwidget"
+import WordWidget from "/src/components/word/wordwidget"
 import { Fragment, useMemo } from "react";
 import { IoRefresh } from 'react-icons/io5';
 import { useNavigate, useParams } from "react-router-dom";

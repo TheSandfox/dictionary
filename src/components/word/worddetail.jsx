@@ -1,5 +1,5 @@
 import './worddetail.css'
-import { TagWidgets } from "components/tag/tagwidget";
+import { TagWidgets } from "/src/components/tag/tagwidget";
 import { useMemo } from "react";
 import { IoArrowBackOutline } from 'react-icons/io5';
 import { MdEdit } from "react-icons/md";

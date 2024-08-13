@@ -8,6 +8,10 @@ body {
 	/* overflow-y: scroll; */
 	/* min-height: calc(100vh - var(--header-height) - var(--footer-height)); */
 	height: 100dvh;
-	padding-top: calc(96px + var(--header-height));
-	padding-bottom: calc(96px + var(--footer-height));
+	--vertical-padding: 96px;
+	padding-top: calc(var(--vertical-padding) + var(--header-height));
+	padding-bottom: calc(var(--vertical-padding) + var(--footer-height));
+	@media screen and (max-width:1023px) {
+		--vertical-padding: 32px;
+	}
 }

@@ -11,11 +11,24 @@ header {
 	z-index: 8192;
 	& .innerbox {
 		&>h1 {
+			font-weight: normal;
 			font-size:32px;
+			user-select: none;
+			&>a {
+				display: flex;
+				align-items: center;
+				gap: 8px;
+			}
+			@media screen and (max-width:1023px) {
+				display: none;
+			}
 		}
 		align-items: center;
 		display: flex;
 		gap: 32px;
 		justify-content: space-between;
+		@media screen and (max-width:1023px) {
+			justify-content: center;
+		}
 	}
 }
